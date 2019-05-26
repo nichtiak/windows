@@ -258,6 +258,71 @@ module.exports = tabs;
 
 /***/ }),
 
+/***/ "./src/js/parts/timer.js":
+/*!*******************************!*\
+  !*** ./src/js/parts/timer.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function timer () {
+    let deadLine = '2019-12-18';
+
+    function getTimeRemaining(endtime) {
+        let t = Date.parse(endtime) - Date.parse(new Date());
+        seconds = Math.floor((t/1000) % 60),
+        minutes = Math.floor((t/1000/60) % 60),
+        hours = Math.floor((t/1000/60/60) % 24);
+        days = Math.floor((t/(1000*60*60*24)));
+
+        days = checkTime(days);
+        hours = checkTime(hours);
+		minutes = checkTime(minutes);
+		seconds = checkTime(seconds);
+
+        return {
+            'total' : t,
+            'days' : days,
+            'hours' : hours,
+            'minutes' : minutes,
+            'seconds' : seconds
+        };
+        function checkTime(i) {
+			if (i < 10) {
+				i = "0" + i;
+			}
+			return i;
+		}
+    }
+
+    function setClock (id, endtime) {
+        let timer = document.getElementById(id),
+            days = document.getElementById('days'),
+            hours = document.getElementById('hours'),
+            minutes = document.getElementById('minutes'),
+            seconds = document.getElementById('seconds'),
+            timeInterval = setInterval(upDateClock, 1000);
+
+        function upDateClock() {
+            let t = getTimeRemaining(endtime);
+            days.textContent = t.days;
+            hours.textContent = t.hours;
+            minutes.textContent = t.minutes;
+            seconds.textContent = t.seconds;
+
+            if (t.total <= 0) {
+                clearInterval(timeInterval);
+            }
+        }
+    }
+
+    setClock ('timer', deadLine);
+}
+timer();
+module.exports = timer;
+
+/***/ }),
+
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
@@ -270,11 +335,13 @@ window.addEventListener('DOMContentLoaded', function () {
     "use strict";
     let tabs = __webpack_require__ (/*! ./parts/tabs.js */ "./src/js/parts/tabs.js"),
         modals = __webpack_require__ (/*! ./parts/modals.js */ "./src/js/parts/modals.js"),
+        timer = __webpack_require__ (/*! ./parts/timer.js */ "./src/js/parts/timer.js"),
         form = __webpack_require__ (/*! ./parts/form.js */ "./src/js/parts/form.js");
 
     tabs();
     modals();
     form();
+    timer();
 });
 
 /***/ })
