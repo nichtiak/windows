@@ -13,7 +13,8 @@ function modals() {
     });
 
     for (let i = 0; i < btnPopup.length; i++) {
-        btnPopup[i].addEventListener('click', function () {
+        btnPopup[i].addEventListener('click', function (e) {
+            e.preventDefault();
             popup.style.display = 'block';
             document.body.style.overflow = 'hidden';
         });
@@ -47,5 +48,4 @@ function modals() {
     }
     setTimeout (modalDelay, 61000);
 }
-modals();
 module.exports = modals;

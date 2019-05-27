@@ -51,5 +51,4 @@ function timer () {
 
     setClock ('timer', deadLine);
 }
-timer();
 module.exports = timer;

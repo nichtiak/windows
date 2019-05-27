@@ -7,7 +7,7 @@ function form() {
     let forms = document.querySelectorAll('.form'),
         statusMessage = document.createElement('div');
 
-    console.log(forms[0]);
+    // console.log(forms[0]);
 
     statusMessage.classList.add('status');
 
@@ -52,5 +52,4 @@ function form() {
         });
     });
 }
-form();
 module.exports = form;
