@@ -243,7 +243,7 @@ function tabs() {
         decorationInfo = document.querySelectorAll('.decoration_info');
 
     // console.log(decorationInfo);
-    console.log(tabGlazingUrl);
+    // console.log(tabGlazingUrl);
     // glazingContent[0].style.display = 'none';
 
     function hideGlazingContent(a, tabContent) {
