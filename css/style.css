@@ -490,6 +490,10 @@ textarea:focus {
   text-decoration: none;
   color: #454545;
 }
+.glazing a.no_active{
+  text-decoration: none;
+  color: #337ab7;
+}
 
 /*test*/
 /*.tabs li {

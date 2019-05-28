@@ -1,18 +1,20 @@
-function tabs () {
+function tabs() {
     let tabGlazing = document.querySelectorAll('.glazing_block'),
+        tabGlazingUrl = document.querySelectorAll('.glazing_block a'),
         glazingContent = document.querySelectorAll('.glazing_content'),
 
         tabDecoration = document.querySelectorAll('.decoration_item'),
+        tabDecorationUrl = document.querySelectorAll('.decoration_item div'),
         decorationInfo = document.querySelectorAll('.decoration_info');
 
-        // console.log(decorationInfo);
-        // console.log(tabGlazing);
-        // glazingContent[0].style.display = 'none';
+    // console.log(decorationInfo);
+    console.log(tabGlazingUrl);
+    // glazingContent[0].style.display = 'none';
 
     function hideGlazingContent(a, tabContent) {
         for (let i = a; i < tabContent.length; i++) {
             tabContent[i].style.display = 'none';
-            
+
         }
     }
     // hideGlazingContent(1);
@@ -23,36 +25,40 @@ function tabs () {
         }
     }
 
-    // tabGlazingParent.addEventListener('click', function (event) {
-    //     let target = event.target;
-    //     // this.target = target;
-    //     if (target && target.classList.contains('glazing_block')) {
-    //         for (let i = 0; i < tabGlazing.length; i++) {
-    //             if (target == tabGlazing[i]) {
-    //                 hideGlazingContent(0);
-    //                 showGlazingContent(i);
-    //                 break;
-                                  
-    //             }
-    //         }
-    //     }
-    // });
-    function toggleTabs (tabsClasses, tabsBtn, tabsContent) {
+
+    function linkdesactive(c, tabsUrl, activeClass) {
+        for (let i = c; i < tabsUrl.length; i++) {
+            tabsUrl[i].classList.remove(activeClass);
+            // tabsUrl[i].classList.add(noActive);
+        }
+    }
+    // linkdesactive(1);
+
+    function linkactive(d, tabsUrl, activeClass) {
+        // if (tabsUrl[d].classList.contains(noActive)) {
+            // tabsUrl[d].classList.remove(noActive);
+            tabsUrl[d].classList.add(activeClass);
+        // }
+    }
+
+    function toggleTabs(tabsClasses, tabsBtn, tabsContent, tabsUrl, activeClass) {
         document.body.addEventListener('click', e => {
             let tabs = e.target.closest(tabsClasses);
-    
+
             if (tabs) {
                 for (let i = 0; i < tabsBtn.length; i++) {
                     if (tabs == tabsBtn[i]) {
+                        linkdesactive(0, tabsUrl, activeClass);
+                        linkactive(i, tabsUrl, activeClass);
                         hideGlazingContent(0, tabsContent);
                         showGlazingContent(i, tabsContent);
-                        break;    
+                        break;
                     }
                 }
             }
         });
     }
-    toggleTabs ('.decoration_item', tabDecoration, decorationInfo);
-    toggleTabs ('.glazing_block', tabGlazing, glazingContent);
+    toggleTabs('.glazing_block', tabGlazing, glazingContent, tabGlazingUrl, 'active');
+    toggleTabs('.decoration_item', tabDecoration, decorationInfo, tabDecorationUrl, 'after_click');
 }
 module.exports = tabs;
