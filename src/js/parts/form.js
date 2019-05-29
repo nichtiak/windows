@@ -4,10 +4,10 @@ function form() {
         success: 'Отправлено',
         failure: 'Ошибка'
     };
-    let forms = document.querySelectorAll('.form_best'),
+    let forms = document.querySelectorAll('.main_form'),
         statusMessage = document.createElement('div');
 
-    // console.log(forms[0]);
+    console.log(forms);
 
     statusMessage.classList.add('status');
 

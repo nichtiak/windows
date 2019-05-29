@@ -12,7 +12,7 @@ function calc() {
         forma = document.querySelector('.end_form'),
         popupCalcInputs = popupCalc.getElementsByTagName("input");
        
-    console.log(forma);
+    // console.log(forma);
     glazingSection.addEventListener("click", (event) => {
         if (event.target && event.target.classList.contains("popup_calc_btn")) {
             popupCalc.style.display = "block";
