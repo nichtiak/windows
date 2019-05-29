@@ -7,13 +7,13 @@ function modals() {
         btnPopup = document.querySelectorAll('.phone_link');
 
 
-    btnEngineer.addEventListener('click', function () {
+    btnEngineer.addEventListener('click', () => {
         popupEngineer.style.display = 'block';
         document.body.style.overflow = 'hidden';
     });
 
     for (let i = 0; i < btnPopup.length; i++) {
-        btnPopup[i].addEventListener('click', function (e) {
+        btnPopup[i].addEventListener('click', (e) => {
             e.preventDefault();
             popup.style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -21,7 +21,7 @@ function modals() {
     }
     function closeModal() {
         for (let i = 0; i < close.length; i++) {
-            close[i].addEventListener('click', function () {
+            close[i].addEventListener('click', () => {
                 for (let c = 0; c < allModal.length; c++) {
                     allModal[c].style.display = 'none';
                     document.body.style.overflow = '';

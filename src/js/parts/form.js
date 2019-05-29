@@ -14,7 +14,7 @@ function form() {
     function sendForm() {
         for (let i = 0; i < forms.length; i++) {
             let form = forms[i];
-            form.addEventListener('submit', function (event) {
+            form.addEventListener('submit', (event) => {
                 event.preventDefault();
                 form.appendChild(statusMessage);
                 input = form.querySelectorAll('.form-control');
@@ -27,7 +27,7 @@ function form() {
 
                 request.send(formData);
 
-                request.addEventListener('readystatechange', function () {
+                request.addEventListener('readystatechange', () => {
                     if (request.readyState < 4) {
                         statusMessage.innerHTML = message.loading;
                     } else if (request.readyState === 4 && request.status == 200) {

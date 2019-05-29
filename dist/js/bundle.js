@@ -279,7 +279,7 @@ function calc() {
 
     function closeModalCalc() {
         for (let i = 0; i < closeCalc.length; i++) {
-            closeCalc[i].addEventListener('click', function () {
+            closeCalc[i].addEventListener('click', () => {
                 for (let c = 0; c < allModalCalc.length; c++) {
                     allModalCalc[c].style.display = 'none';
                     document.body.style.overflow = '';
@@ -303,7 +303,7 @@ function calc() {
 
         //write type window in obj
         for (let i = 0; i < smallPictures.length; i++) {
-            smallPictures[i].addEventListener('click', function (e) {
+            smallPictures[i].addEventListener('click', (e) => {
                 let target = e.target;
                 if (target == smallPictures[i]) {
                     obj.type = smallPictures[i].getAttribute('alt');
@@ -312,13 +312,13 @@ function calc() {
         }
   
         //write data about window in obj
-        popupCalcButton.addEventListener('click', function() {
+        popupCalcButton.addEventListener('click', () => {
             obj.width_window = document.getElementById('width').value;
             obj.height_window = document.getElementById('height').value;
         });
 
         //write chekbox in obj
-        document.querySelector('.popup_calc_profile_button').addEventListener('click', function() {
+        document.querySelector('.popup_calc_profile_button').addEventListener('click', () => {
             if (document.getElementById('Check1').checked) {
                 obj.weather = 'Холодное';
             } else {
@@ -330,7 +330,7 @@ function calc() {
 
     function sendFormCalc() {
         
-        forma.addEventListener('submit', function (event) {
+        forma.addEventListener('submit', (event) => {
             event.preventDefault();
             forma.appendChild(statusMessage);
             input = forma.querySelectorAll('.form-control');
@@ -350,7 +350,7 @@ function calc() {
 
             request.send(json);
 
-            request.addEventListener('readystatechange', function () {
+            request.addEventListener('readystatechange', () => {
                 if (request.readyState < 4) {
                     statusMessage.innerHTML = message.loading;
                 } else if (request.readyState === 4 && request.status == 200) {
@@ -394,7 +394,7 @@ function form() {
     function sendForm() {
         for (let i = 0; i < forms.length; i++) {
             let form = forms[i];
-            form.addEventListener('submit', function (event) {
+            form.addEventListener('submit', (event) => {
                 event.preventDefault();
                 form.appendChild(statusMessage);
                 input = form.querySelectorAll('.form-control');
@@ -407,7 +407,7 @@ function form() {
 
                 request.send(formData);
 
-                request.addEventListener('readystatechange', function () {
+                request.addEventListener('readystatechange', () => {
                     if (request.readyState < 4) {
                         statusMessage.innerHTML = message.loading;
                     } else if (request.readyState === 4 && request.status == 200) {
@@ -488,13 +488,13 @@ function modals() {
         btnPopup = document.querySelectorAll('.phone_link');
 
 
-    btnEngineer.addEventListener('click', function () {
+    btnEngineer.addEventListener('click', () => {
         popupEngineer.style.display = 'block';
         document.body.style.overflow = 'hidden';
     });
 
     for (let i = 0; i < btnPopup.length; i++) {
-        btnPopup[i].addEventListener('click', function (e) {
+        btnPopup[i].addEventListener('click', (e) => {
             e.preventDefault();
             popup.style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -502,7 +502,7 @@ function modals() {
     }
     function closeModal() {
         for (let i = 0; i < close.length; i++) {
-            close[i].addEventListener('click', function () {
+            close[i].addEventListener('click', () => {
                 for (let c = 0; c < allModal.length; c++) {
                     allModal[c].style.display = 'none';
                     document.body.style.overflow = '';
@@ -584,7 +584,7 @@ function tabs() {
     }
 
     function toggleTabs(tabsClasses, tabsBtn, tabsContent, tabsUrl, activeClass) {
-        document.body.addEventListener('click', e => {
+        document.body.addEventListener('click', (e) => {
             let tabs = e.target.closest(tabsClasses);
 
             if (tabs) {
