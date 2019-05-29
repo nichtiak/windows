@@ -9,10 +9,10 @@ function calc() {
         popupCalc = document.querySelector(".popup_calc"),
         closeCalc = document.querySelectorAll('.popup_calc_close, .popup_calc_profile_close, .popup_calc_end_close'),
         allModalCalc = document.querySelectorAll('.popup_calc, .popup_calc_profile, .popup_calc_end'),
-        forma = document.getElementById('form_end'),
+        forma = document.querySelector('.end_form'),
         popupCalcInputs = popupCalc.getElementsByTagName("input");
        
-    // console.log(forma);
+    console.log(forma);
     glazingSection.addEventListener("click", (event) => {
         if (event.target && event.target.classList.contains("popup_calc_btn")) {
             popupCalc.style.display = "block";
@@ -142,18 +142,18 @@ function calc() {
             obj.height_window = document.getElementById('height').value;
         });
 
+        //write chekbox in obj
         document.querySelector('.popup_calc_profile_button').addEventListener('click', function() {
             if (document.getElementById('Check1').checked) {
                 obj.weather = 'Холодное';
             } else {
                 obj.weather = 'Тёплое';
             }
-            console.log(obj);
         });
+
     
 
     function sendFormCalc() {
-        // for (let i = 0; i < forms.length; i++) {
         
         forma.addEventListener('submit', function (event) {
             event.preventDefault();

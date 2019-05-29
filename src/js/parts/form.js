@@ -4,7 +4,7 @@ function form() {
         success: 'Отправлено',
         failure: 'Ошибка'
     };
-    let forms = document.querySelectorAll('.form'),
+    let forms = document.querySelectorAll('.form_best'),
         statusMessage = document.createElement('div');
 
     // console.log(forms[0]);

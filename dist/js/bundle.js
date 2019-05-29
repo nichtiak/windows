@@ -104,10 +104,10 @@ function calc() {
         popupCalc = document.querySelector(".popup_calc"),
         closeCalc = document.querySelectorAll('.popup_calc_close, .popup_calc_profile_close, .popup_calc_end_close'),
         allModalCalc = document.querySelectorAll('.popup_calc, .popup_calc_profile, .popup_calc_end'),
-        forma = document.getElementById('form_end'),
+        forma = document.querySelector('.end_form'),
         popupCalcInputs = popupCalc.getElementsByTagName("input");
        
-    // console.log(forma);
+    console.log(forma);
     glazingSection.addEventListener("click", (event) => {
         if (event.target && event.target.classList.contains("popup_calc_btn")) {
             popupCalc.style.display = "block";
@@ -237,18 +237,18 @@ function calc() {
             obj.height_window = document.getElementById('height').value;
         });
 
+        //write chekbox in obj
         document.querySelector('.popup_calc_profile_button').addEventListener('click', function() {
             if (document.getElementById('Check1').checked) {
                 obj.weather = 'Холодное';
             } else {
                 obj.weather = 'Тёплое';
             }
-            console.log(obj);
         });
+
     
 
     function sendFormCalc() {
-        // for (let i = 0; i < forms.length; i++) {
         
         forma.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -304,7 +304,7 @@ function form() {
         success: 'Отправлено',
         failure: 'Ошибка'
     };
-    let forms = document.querySelectorAll('.form'),
+    let forms = document.querySelectorAll('.form_best'),
         statusMessage = document.createElement('div');
 
     // console.log(forms[0]);
@@ -364,7 +364,31 @@ module.exports = form;
 /***/ (function(module, exports) {
 
 function images() {
-    let imgMin = document.querySelectorAll('.img_min');
+    let imgMin = document.querySelectorAll('.img_min'),
+        imgBig = document.querySelectorAll('.works a'),
+        img = document.createElement('img');
+        imgBlock = document.createElement ('div');
+        
+        imgBlock.classList.add('overlay');
+        imgBlock.classList.add('imgModal');
+
+        for (let i = 0; i < imgMin.length; i++) {
+            imgMin[i].addEventListener('click', function (e) {
+                e.preventDefault();
+                let target = e.target;
+                for (let a = 0; a < imgBig.length; a++) {
+                    let imgUrl = imgBig[a].getAttribute('href');
+                    if (target == imgBig[a]) {
+                        body.appendChild(imgBlock);
+                        imgBlock.style.display = 'block';
+                        img.setAttribute('src', imgUrl);
+                        let imgModal = document.querySelector('.imgModal');
+                        imgModal.appendChild(img);
+                        console.log(imgModal);
+                    }
+                }
+            });
+        }
 }
 module.exports = images;
 
