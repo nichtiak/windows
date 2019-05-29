@@ -370,8 +370,8 @@ function form() {
     failure: 'Ошибка'
   };
   var forms = document.querySelectorAll('.main_form'),
-      statusMessage = document.createElement('div');
-  console.log(forms);
+      statusMessage = document.createElement('div'); // console.log(forms);
+
   statusMessage.classList.add('status');
 
   function sendForm() {

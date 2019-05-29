@@ -7,7 +7,7 @@ function form() {
     let forms = document.querySelectorAll('.main_form'),
         statusMessage = document.createElement('div');
 
-    console.log(forms);
+    // console.log(forms);
 
     statusMessage.classList.add('status');
 
