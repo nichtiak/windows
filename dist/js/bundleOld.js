@@ -476,6 +476,8 @@ function modals() {
       allModal = document.querySelectorAll('.popup_engineer, .popup'),
       popup = document.querySelector('.popup'),
       btnPopup = document.querySelectorAll('.phone_link');
+  popupContent = document.querySelector('.popup_content'); // console.log(popupContent);
+
   btnEngineer.addEventListener('click', function () {
     popupEngineer.style.display = 'block';
     document.body.style.overflow = 'hidden';
@@ -485,16 +487,34 @@ function modals() {
     btnPopup[i].addEventListener('click', function (e) {
       e.preventDefault();
       popup.style.display = 'block';
+
+      if (popupContent.classList.contains('zoomOutRight')) {
+        popupContent.classList.remove('zoomOutRight');
+      }
+
+      popupContent.classList.add('zoomInRight');
+      popupContent.style.animationDuration = '.7s';
       document.body.style.overflow = 'hidden';
     });
   }
 
   function closeModal() {
     for (var _i = 0; _i < close.length; _i++) {
-      close[_i].addEventListener('click', function () {
-        for (var c = 0; c < allModal.length; c++) {
-          allModal[c].style.display = 'none';
+      close[_i].addEventListener('click', function (e) {
+        e.preventDefault();
+
+        var _loop = function _loop(c) {
+          popupContent.classList.remove('zoomInRight');
+          popupContent.classList.add('zoomOutRight');
+          setTimeout(function () {
+            allModal[c].style.display = 'none';
+            popupContent.classList.remove('zoomOutRight');
+          }, 700);
           document.body.style.overflow = '';
+        };
+
+        for (var c = 0; c < allModal.length; c++) {
+          _loop(c);
         }
       });
     }
@@ -503,11 +523,21 @@ function modals() {
   closeModal();
 
   function closeModalWindow(e) {
-    for (var _i2 = 0; _i2 < allModal.length; _i2++) {
+    var _loop2 = function _loop2(_i2) {
       if (e.target == allModal[_i2]) {
-        allModal[_i2].style.display = 'none';
+        popupContent.classList.remove('zoomInRight');
+        popupContent.classList.add('zoomOutRight');
+        setTimeout(function () {
+          allModal[_i2].style.display = 'none';
+          popupContent.classList.remove('zoomOutRight');
+        }, 700); // allModal[i].style.display = 'none';
+
         document.body.style.overflow = '';
       }
+    };
+
+    for (var _i2 = 0; _i2 < allModal.length; _i2++) {
+      _loop2(_i2);
     }
   }
 
@@ -515,10 +545,12 @@ function modals() {
 
   function modalDelay() {
     popup.style.display = 'block';
+    popupContent.classList.add('zoomIn');
+    popupContent.style.animationDuration = '.7s';
     document.body.style.overflow = 'hidden';
   }
 
-  setTimeout(modalDelay, 61000);
+  setTimeout(modalDelay, 15000);
 }
 
 module.exports = modals;
@@ -569,6 +601,7 @@ function tabs() {
   }
 
   function toggleTabs(tabsClasses, tabsBtn, tabsContent, tabsUrl, activeClass) {
+    console.log(tabsBtn.style);
     document.body.addEventListener('click', function (e) {
       var tabs = e.target.closest(tabsClasses);
 

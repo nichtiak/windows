@@ -41,7 +41,10 @@ function tabs() {
         // }
     }
 
+    
+
     function toggleTabs(tabsClasses, tabsBtn, tabsContent, tabsUrl, activeClass) {
+        console.log(tabsBtn.style);
         document.body.addEventListener('click', (e) => {
             let tabs = e.target.closest(tabsClasses);
 
